@@ -56,13 +56,13 @@ This repository is being organized from existing NeuraDock tutorial materials, e
 | Example | Directory | Description | Status |
 |---|---|---|---|
 | Signal Quality Check | `signal-quality/` | Inspect basic EEG signal quality using recorded NeuraDock data | Preparing |
-| SSVEP Workflow | `ssvep/` | Visual stimulation and offline SSVEP analysis workflow | Preparing |
-| Real-Time Marker Workflow | `real-time-marker/` | Inject event markers into real-time EEG data streams | Preparing |
+| SSVEP Workflow | `ssvep/` | Visual stimulation and offline SSVEP analysis workflow | available |
+| Real-Time Marker Workflow | `marker/` | Inject event markers into real-time EEG data streams | available |
 | cVEP Workflow | `cvep/` | Code-modulated visual evoked potential workflow | Planned |
-| Eyes-Open / Eyes-Closed | `eyes-open-closed/` | Basic EEG comparison workflow for signal inspection and alpha activity observation | Planned |
-| Band Power Analysis | `band-power/` | Frequency band power calculation and visualization | Planned |
+| Eyes-Open / Eyes-Closed | `eyes-open-closed/` | Basic EEG comparison workflow for signal inspection and alpha activity observation | available |
+| Band Power Analysis | `band-power/` | Frequency band power calculation and visualization | available |
 | PSD Visualization | `psd/` | Power spectral density visualization for EEG signals | Planned |
-| Visual Reconstruction Demo | `visual-reconstruction/` | Advanced EEG visual reconstruction research example | Planned |
+| Visual Reconstruction Demo | `visual-reconstruction/` | Advanced EEG visual reconstruction research example | available |
 
 ## Recommended Repository Structure
 
@@ -350,26 +350,6 @@ Each example directory should include its own `README.md` that states:
 - How to run the example
 - Expected output
 - Known limitations
-
-## Public Release Checklist
-
-Before public release, the technical team should confirm:
-
-| Item | Status |
-|---|---|
-| Signal quality example uploaded | To be confirmed |
-| SSVEP example uploaded | To be confirmed |
-| Real-time marker example uploaded | To be confirmed |
-| cVEP example reviewed | To be confirmed |
-| Eyes-open / eyes-closed example reviewed | To be confirmed |
-| Band power example reviewed | To be confirmed |
-| PSD example reviewed | To be confirmed |
-| Visual reconstruction demo policy confirmed | To be confirmed |
-| Example dependencies verified | To be confirmed |
-| Sample data paths verified | To be confirmed |
-| All local paths removed | To be confirmed |
-| Chinese comments translated or explained | To be confirmed |
-| License confirmed | To be confirmed |
 
 ## Related Documentation
 
