@@ -22,6 +22,33 @@ Each example lives in its own folder with a dedicated `README.md`, the helper li
 
 ---
 
+## 📊 Representative Research Outputs
+
+These figures are representative offline summaries from a local motor-imagery field-test recording using the same seven-channel layout as [`mi-bci-neurofeedback/`](mi-bci-neurofeedback/): `T5, T6, PO3, PO4, O1, Oz, O2`. They show the kinds of downstream analyses that can be built around NeuraDock recordings.
+
+> **Scope:** these images are visual references, not performance benchmarks or diagnostic outputs. The field-tested `full_test.py` workflow remains unchanged and does not generate these figures automatically. No raw participant recording is included in this repository.
+
+[![Alpha ERD/ERS and connectivity summary](assets/readme/mi-erders-connectivity.png)](assets/readme/mi-erders-connectivity.png)
+
+*Alpha-band ERD/ERS comparison, phase-locking-value matrices, and a seven-channel connectivity view.*
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="assets/readme/mi-filtered-feature-summary.png"><img src="assets/readme/mi-filtered-feature-summary.png" alt="Filtered motor-imagery feature summary" width="100%"></a><br>
+      <sub>Channel-level distributions for ERD/ERS, Beta/Alpha ratio, Hjorth complexity, and selected Alpha-band PLI edges.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="assets/readme/mi-feature-distributions.png"><img src="assets/readme/mi-feature-distributions.png" alt="Motor-imagery feature distributions" width="100%"></a><br>
+      <sub>A compact multi-feature view across the seven EEG channels and selected connectivity pairs.</sub>
+    </td>
+  </tr>
+</table>
+
+Click any figure to open the full-resolution result.
+
+---
+
 ## 📥 Getting the Data
 
 The example recordings (`.txt` EEG files) are **not stored in this repository**. They live in a separate data repository:
