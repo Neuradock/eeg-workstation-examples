@@ -1,0 +1,15 @@
+# Live EEG and participant-derived session files
+1.txt
+data_*.npy
+*.npz
+
+# Generated analyses and reports
+MI_Report_*.pdf
+Clinical_Dashboard_*.png
+eeg_*.png
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/

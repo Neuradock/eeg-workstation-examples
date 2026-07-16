@@ -16,6 +16,7 @@ Each example lives in its own folder with a dedicated `README.md`, the helper li
 | **Eyes Open / Closed** | [`eyes-open-closed/`](eyes-open-closed/) | Classic **Alpha-blocking** demo — detect eyes-closed vs. eyes-open from the 8–13 Hz Alpha envelope. | Notebook (offline) |
 | **SSVEP** | [`ssvep/`](ssvep/) | Frequency-tagged flicker stimulation (PsychoPy) + offline SSVEP frequency-domain analysis. | Experiment (live) |
 | **c-VEP Speller** | [`neuradock_cvep/`](neuradock_cvep/) | Code-modulated VEP speller: m-sequence calibration → online 4-target decoding (TTCA). | Experiment (live) |
+| **Motor-Imagery Neurofeedback** | [`mi-bci-neurofeedback/`](mi-bci-neurofeedback/) | Field-tested closed-loop workflow: threshold-feedback calibration → RBF-SVM training → online motor-imagery neurofeedback. | Experiment (live) |
 | **Real-Time Marker** | [`marker/`](marker/) | Stream EEG over TCP and inject event markers into the live data for paradigm synchronization. | Library (live) |
 | **Visual Reconstruction** | [`Visual-reconstruction/`](Visual-reconstruction/) | Reconstruct viewed images from 7-channel occipital EEG using guided diffusion (links to full project repo). | Research demo |
 
@@ -36,6 +37,7 @@ Download the file(s) an example needs and place them **inside that example's fol
 | `band-power/` | `rest_20251024160452_2m12s.txt`, `task_20251024160748_2m33s.txt` |
 | `eyes-open-closed/` | `open_closed_eye2.txt` |
 | `ssvep/`, `neuradock_cvep/`, `marker/` | *None* — these record their own data live from the device. |
+| `mi-bci-neurofeedback/` | *None* — it records its own data live from the device. |
 | `Visual-reconstruction/` | See the [project repository](https://github.com/xzy286/EEG_Visual_Reconstruction_NeuraDock). |
 
 > **Tip:** clone the data repo once, then copy the file you need into the example folder:
@@ -66,12 +68,14 @@ See [eeg-workstation-docs → Data Format](https://github.com/Neuradock/eeg-work
   pip install numpy scipy matplotlib pandas seaborn
   ```
 
-- **Live experiments** (`ssvep/`, `neuradock_cvep/`) additionally need **PsychoPy** for stimulus presentation:
+- **Live experiments** (`ssvep/`, `neuradock_cvep/`, `mi-bci-neurofeedback/`) additionally need **PsychoPy** for stimulus presentation:
 
   ```bash
   pip install psychopy
   ```
   PsychoPy is most reliable on Python 3.9 / 3.10.
+
+`mi-bci-neurofeedback/` also requires `scikit-learn` for the RBF-SVM training stage; its `requirements.txt` lists the complete set of packages.
 
 Each example's own `README.md` lists its exact requirements, parameters, and run instructions.
 
@@ -114,6 +118,9 @@ Presents square-wave flicker stimuli via PsychoPy, writes event markers to the d
 
 ### c-VEP Speller — [`neuradock_cvep/`](neuradock_cvep/)
 A code-modulated VEP speller. All four targets share one 63-chip m-sequence, distinguished by circular shifts. `calibration.py` records the four templates; `online_test.py` presents 4 flickering targets and decodes each trial with the **TTCA** classifier (`ttca.py`). See the folder README for the full pipeline and file-based synchronization details. Requires a connected device.
+
+### Motor-Imagery Neurofeedback — [`mi-bci-neurofeedback/`](mi-bci-neurofeedback/)
+An end-to-end, live closed-loop motor-imagery demonstration. Start the TCP receiver in one terminal, then run `full_test.py` in another. The script records a calibration session using the supplied black/white target sequence and hand images, extracts spectral/Hjorth/coherence features from the 7-channel EEG, trains an RBF-SVM, and immediately runs an online test session with visual success/failure feedback. This field-tested workflow uses the channel order `T5, T6, PO3, PO4, O1, Oz, O2`; keep the receiver and analysis mapping aligned. See the folder README for setup, data-governance notes, and limitations.
 
 ### Real-Time Marker — [`marker/`](marker/)
 `neuradock_marker.py` provides a TCP `DataStream` client and an `EEGThreadManager` that buffers samples in a background thread and appends an **event-marker column** to each sample — the synchronization backbone for SSVEP/cVEP/ERP paradigms.
@@ -168,6 +175,7 @@ A pointer to a full research project that reconstructs viewed images from 7-chan
 
 - Offline notebooks are self-contained once their `.txt` data file (from [eeg-workstation-data](https://github.com/Neuradock/eeg-workstation-data)) is in place — no device required.
 - Live experiments (`ssvep/`, `neuradock_cvep/`, `marker/`) require a connected NeuraDock device; set the device IP/port at the top of each script.
+- `mi-bci-neurofeedback/` is a live, research-use workflow that stores raw EEG locally during acquisition. Do not commit participant data or use its output for diagnosis or treatment decisions.
 - This repository deliberately does **not** commit large datasets — keep recordings in the data repository and copy in only what an example needs.
 
 ---
